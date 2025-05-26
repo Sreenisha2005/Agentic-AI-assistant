@@ -1,0 +1,28 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height:100vh;
+    background: linear-gradient(#EEEEFF,#C8C7FF);
+}
+
+.chatbot-popup{
+    width: 420px;
+    background: #fff;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 0 128px 0 rgba(red, green, blue, alpha),0 32px 64px -48px rgba(red, green, blue, alpha); }
+
+
+
