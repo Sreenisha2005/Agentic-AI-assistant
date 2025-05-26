@@ -262,6 +262,14 @@ body.hide-header .header {
   margin-top: 1rem;
   color: var(--placeholder-color);
 }
+.input-wrapper .icon {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+
+
+
 /* Responsive media query code for small screen */
 @media (max-width: 768px) {
   .header :is(.title, .subtitle) {
