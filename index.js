@@ -3,6 +3,7 @@ const chatContainer = document.querySelector(".chat-list");
 const suggestions = document.querySelectorAll(".suggestion");
 const toggleThemeButton = document.querySelector("#theme-toggle-button");
 const deleteChatButton = document.querySelector("#delete-chat-button");
+const micButton = document.querySelector("#mic-button");
 // State variables
 let userMessage = null;
 let isResponseGenerating = false;
@@ -142,3 +143,35 @@ typingForm.addEventListener("submit", (e) => {
   handleOutgoingChat();
 });
 loadDataFromLocalstorage();
+
+// Your existing JS code remains unchanged above...
+
+// ---------------------- MIC BUTTON INTEGRATION ---------------------- //
+
+// Check for browser support
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if (SpeechRecognition) {
+  const recognition = new SpeechRecognition();
+  recognition.lang = 'en-US';
+  recognition.interimResults = false;
+
+  micButton.addEventListener("click", () => {
+    recognition.start();
+    micButton.querySelector("span").innerText = "mic_off"; // Change icon while listening
+  });
+
+  recognition.addEventListener("result", (event) => {
+    const transcript = event.results[0][0].transcript;
+    typingForm.querySelector(".typing-input").value = transcript;
+    userMessage = transcript;
+    handleOutgoingChat();
+  });
+
+  recognition.addEventListener("end", () => {
+    micButton.querySelector("span").innerText = "mic"; // Revert icon
+  });
+} else {
+  micButton.disabled = true;
+  micButton.title = "Speech Recognition not supported";
+}
