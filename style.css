@@ -126,14 +126,14 @@ body.hide-header .header {
   display: none;
 }
 .chat-list .message .avatar {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   object-fit: cover;
   border-radius: 50%;
   align-self: flex-start;
 }
 .chat-list .message.loading .avatar {
-  animation: rotate 3s linear infinite;
+  animation: rotate 5s linear infinite;
 }
 @keyframes rotate {
   100% {
@@ -143,8 +143,8 @@ body.hide-header .header {
 .chat-list .message .icon {
   color: var(--text-color);
   cursor: pointer;
-  height: 35px;
-  width: 35px;
+  height: 30px;
+  width: 30px;
   border-radius: 50%;
   display: flex;
   align-items: center;
