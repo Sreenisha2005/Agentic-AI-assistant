@@ -4,6 +4,31 @@ const suggestions = document.querySelectorAll(".suggestion");
 const toggleThemeButton = document.querySelector("#theme-toggle-button");
 const deleteChatButton = document.querySelector("#delete-chat-button");
 const micButton = document.querySelector("#mic-button");
+
+function sendPromptToBackend(prompt) {
+  axios.post('http://localhost:8000/prompt', { prompt: prompt })
+    .then(response => {
+      console.log("Response from FastAPI:", response.data);
+      // You can use response.data to update the UI
+    })
+    .catch(error => {
+      console.error("Error sending prompt:", error);
+    });
+}
+
+// Example: Hook it to the form submission
+const form = document.querySelector('.typing-form');
+const input = document.querySelector('.typing-input');
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const userPrompt = input.value.trim();
+  if (userPrompt) {
+    sendPromptToBackend(userPrompt); // Axios call
+    input.value = ''; // Clear input
+  }
+});
+
 // State variables
 let userMessage = null;
 let isResponseGenerating = false;
